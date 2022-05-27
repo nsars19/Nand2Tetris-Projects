@@ -11,4 +11,46 @@
 // "white" in every pixel;
 // the screen should remain fully clear as long as no key is pressed.
 
-// Put your code here.
+@SCREEN
+D=A
+@R0
+M=D
+@n
+M=0
+(START)
+@KBD
+D=M
+@CLEAR_SCREEN // KBD is 0, so clear screen
+D;JEQ
+(COLOR)
+// if n == 512 (all pixel blocks) goto START
+@n
+D=M
+@R1
+D=D-M
+@START
+D;JEQ
+// start coloring
+@R0
+D=M
+@n
+A=D+M
+M=-1
+@n
+M=M+1
+@START
+0;JEQ
+(CLEAR_SCREEN)
+@n
+D=M
+@START
+D;JLT // if (n == 0) goto START -- all pixels cleared
+@n
+D=M
+@R0
+A=D+M
+M=0
+@n
+M=M-1
+@CLEAR_SCREEN
+0;JMP

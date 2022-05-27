@@ -1,0 +1,16 @@
+(START)
+goto KBD register
+if (KBD == 0)
+jmp CLEAR_SCREEN
+// set black
+goto SCREEN register
+if (first segment is black)
+jmp START
+color full screen
+jmp START
+(CLEAR_SCREEN)
+goto SCREEN register
+if (first segment is white)
+jmp START
+clear full screen
+jmp START
