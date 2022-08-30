@@ -54,7 +54,7 @@ export default class Parser {
       return InstructionType.L_INSTRUCTION;
     }
 
-    if (v?.indexOf("@") > -1) {
+    if (v?.indexOf("@") === 0) {
       return InstructionType.A_INSTRUCTION;
     }
 
