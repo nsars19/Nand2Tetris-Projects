@@ -56,8 +56,7 @@ const main = () => {
         if (symbol === null) {
           throw new Error("Invalid symbol");
         } else if (isNaN(parseInt(symbol))) {
-          // get address from symbols table
-          // symbols.contains(symbol) ?
+          // get address from symbols table/ or create it if not present
           symbol = symbols.contains(symbol)
             ? symbols.getAddress(symbol).toString()
             : symbols.addEntry(symbol).toString();
