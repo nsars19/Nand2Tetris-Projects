@@ -4,8 +4,6 @@ import { bin, getFileContents } from "./util";
 import fs from "fs";
 import { symbolTable } from "./symbols";
 
-console.log(0xdadb0d);
-
 const main = () => {
   const fileDetail = getFileContents(process.argv);
   const binFilePath = fileDetail.pathOut;
@@ -50,11 +48,7 @@ const main = () => {
         const jump = translator.jump(spParser.jump());
         const a = spParser.comp()?.includes("M") ? "1" : "0";
         const cInstruction = `111${a}${comp}${dest}${jump}\r\n`;
-        // console.log({
-        //   dest: spParser.dest(),
-        //   comp: spParser.comp(),
-        //   jump: spParser.jump(),
-        // });
+
         fs.appendFileSync(binFilePath, cInstruction);
 
         break;
@@ -92,6 +86,3 @@ try {
   console.log(e);
   process.exit(1);
 }
-
-// 1110101010000111
-// 1110101010000111
